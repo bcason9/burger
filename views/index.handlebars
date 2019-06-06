@@ -1,0 +1,126 @@
+<div class="container">
+
+    <div class="jumbotron">
+        <h1>Order a Burger </h1>
+        <p>Burger Orders for Pickup.</p>
+        <br>
+        <h2>Select a Burger</h2>
+        <panel>
+            <form class="create-form">
+                <div class="form-group">
+                    <label for="newburger">Order a Burger</label>
+                    
+                    <select data-placeholder="" id="newitem" name="burger">
+                        <option value="No Selection" selected>Please Select a Sandwich</option>
+                        <option value="Hamburger">Hamburger</option>
+                        <option value="CheeseBurger">CheeseBurger</option>
+                        <option value="VeggieBurger">Veggie Burger</option>
+                    </select>
+
+                    <button type="submit" class="btn btn-primary" id="add">Submit</button>
+                </div>
+            </form>
+        </panel>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            
+                <div class="jumbotron"><h4>Order Your Burger!</h4>
+                    <h6>Send order to cashier when ready for pick up</h6>
+                
+                
+
+                    <ul>
+                        {{#each burgers}}
+                        {{#unless devoured}}
+
+                        <p> {{this.id}} - {{this.burger_name}}</p>
+                        <button type="button" class="btn btn-primary" id="eat" data-id="{{this.id}}"
+                            data-newDevoured="{{devour}}">Eat it</button>
+                        <hr>
+                        {{/unless}}
+                        {{/each}}
+                    </ul>
+                </div>
+                
+            
+        </div>
+
+        <div class="col-md-6">
+            <div class="jumbotron"><h4>Pick up you Burger!</h4>
+            <h6>Take your burger when it is ready.</h6>
+                <ul>
+                    {{#each burgers}}
+                    {{#if devoured}}
+                    <p>{{this.id}} - {{this.burger_name}}</p>
+                    <button type="button" class="btn btn-danger" id="pick" data-id="{{this.id}}"
+                    data-newDevoured="{{devour}}">Pick up</button>
+                    <hr>
+                    {{/if}}
+                    {{/each}}
+
+            </div>
+
+        </div>
+       
+
+    </div>
+</div>
+
+<script type="text/javascript">
+function startApp(){
+    $("#add").on("submit", function(event) {
+        event.preventDefault();
+    
+        var newBurger = {
+          burger_name: $("#newitem").val(),
+          devoured: 0
+        };
+    
+        $.ajax("/api/burgers", {
+          type: "POST",
+          data: newBurger
+        }).then(function() {
+          console.log("Added");
+          location.reload();
+        });
+    });
+
+    $("#eat").on("click", function(event) {
+        event.preventDefault();
+    
+        var id = $(this).data("id");
+        var devouredState = {
+          devoured: 1
+        };
+    
+        $.ajax("/api/burgers/" + id, {
+          type: "PUT",
+          data: devouredState
+        }).then(function() {
+          console.log("Burger eaten");
+          location.reload();
+        });
+    });
+
+      $(".trashburger").on("click", function(event) {
+        event.preventDefault();
+    
+        var id = $(this).data("id");
+    
+        $.ajax({
+          type: "DELETE",
+          url: "/api/burgers/" + id
+        }).then(location.reload());
+      });
+
+};
+
+
+startApp()
+
+
+</script>
+
+
+
