@@ -1,9 +1,9 @@
 body {
-    background-image: linear-gradient(yellow,red,yellow);
+    background-image: linear-gradient(rgb(28, 192, 6),rgb(253, 94, 94),rgb(28, 192, 6));
 
 }
 
 .jumbotron {
-    color: white;
-    background-color: rgba(4, 128, 45, 0.945)
+    color: blueviolet;
+    background-color: rgb(209, 205, 205)
 }
