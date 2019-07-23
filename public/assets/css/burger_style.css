@@ -13,12 +13,3 @@ h1 {
     background-color: rgb(163, 201, 201)
 }
 
-img {
-    height: 200px;
-    width: auto;
-    float: right;
-    position: relative;
-    bottom: 100px;
-    right: 80px;
-    border-radius: 10px;
-}
