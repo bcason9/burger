@@ -1,9 +1,24 @@
 body {
-    background-image: linear-gradient(rgb(250, 9, 9), rgb(44, 177, 44),rgb(250, 9, 9));
+    background-image: linear-gradient(rgb(250, 9, 9), rgb(235, 232, 60),rgb(250, 9, 9));
 
+}
+
+h1 {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-weight: bolder;
 }
 
 .jumbotron {
     color: rgb(97, 31, 158);
     background-color: rgb(163, 201, 201)
+}
+
+img {
+    height: 200px;
+    width: auto;
+    float: right;
+    position: relative;
+    bottom: 100px;
+    right: 80px;
+    border-radius: 10px;
 }
