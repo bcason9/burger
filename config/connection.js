@@ -24,13 +24,3 @@ if (process.env.JAWSDB_URL) {
   });
 
   module.exports = connection;
-
-  /*
-
-  Host	ou6zjjcqbi307lip.cbetxkdyhwsb.us-east-1.rds.amazonaws.com	
-Username	y57k295skevhpigc	
-Password	o7sr5efnnw2dd9j4	
-Port	3306	
-Database	d42b29g1og7l7h83
-
-*/
